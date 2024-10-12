@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .box-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .box-container img {
+            width: 700px;
+            transition: transform 0.3s ease;
+        }
+
+        .box-text {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .explode {
+            animation: explode 0.5s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-text" id="boxText">CLICK THE LUCKY BOX!</div>
+    <a href="file:///C:/Users/dltlgus/Desktop/HTML%20for%20LSE%20Birthday/Happy%20Birthday%202.html" id="boxLink">
+        <div class="box-container">
+            <img src="pngwing.com.png" alt="클릭하면 터지는 상자" id="boxImage">
+        </div>
+    </a>
+
+    <script>
+        document.getElementById('boxImage').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('boxText').style.opacity = 0;
+            this.classList.add('explode');
+            setTimeout(() => {
+                window.location.href = document.getElementById('boxLink').href;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
